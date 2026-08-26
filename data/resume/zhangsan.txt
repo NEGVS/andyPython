@@ -1,0 +1,24 @@
+姓名：张三
+
+工作经验：5年
+
+求职意向：
+Java高级开发工程师
+
+技术技能：
+Java、Spring Boot、Spring Cloud、MySQL、Redis、Kafka、Elasticsearch、Docker
+
+项目经验：
+
+负责企业智能招聘系统开发。
+
+后端采用Java和Spring Boot开发，整体系统采用Spring Cloud微服务架构。
+
+负责Kafka异步消息处理，使用Redis进行缓存优化。
+
+负责Elasticsearch简历全文检索和候选人搜索功能。
+
+参与MySQL数据库设计和SQL性能优化。
+
+有大型企业招聘管理系统开发经验。
+

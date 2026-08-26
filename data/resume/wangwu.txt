@@ -1,0 +1,24 @@
+姓名：王五
+
+工作经验：6年
+
+求职意向：
+Java开发工程师
+
+技术技能：
+Java、Spring Boot、MySQL、Redis、Docker、Kubernetes、Vue
+
+项目经验：
+
+负责企业ERP系统开发。
+
+使用Java和Spring Boot开发后端服务。
+
+负责MySQL数据库设计。
+
+使用Redis进行缓存。
+
+负责Docker容器化部署。
+
+有微服务系统运维经验。
+

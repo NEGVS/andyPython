@@ -1,0 +1,22 @@
+姓名：李四
+
+工作经验：3年
+
+求职意向：
+AI算法工程师
+
+技术技能：
+Python、Machine Learning、PyTorch、LangChain、RAG、LLM、ChromaDB
+
+项目经验：
+
+负责企业智能问答系统开发。
+
+使用Python和LangChain构建RAG知识库。
+
+使用SentenceTransformer生成文本向量。
+
+使用ChromaDB进行向量检索。
+
+接入大语言模型实现智能问答。
+
