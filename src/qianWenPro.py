@@ -20,7 +20,7 @@ client = OpenAI(
 print("client：")
 print(client)
 
-content = "简单介绍RAG是什么"
+content = "简单介绍RAG是什么,控制在 100个字内"
 resp = client.chat.completions.create(
     model="qwen3.7-plus",
     messages=[

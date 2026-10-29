@@ -3,6 +3,7 @@
 # 1. 删除旧的origin
 git remote remove origin
 
+
 # 2. 重新添加https远程地址
 git remote add origin https://github.com/NEGVS/andyPython.git
 
