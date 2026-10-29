@@ -33,8 +33,8 @@ PORT = 8000
 # 流式场景下 timeout 是两个 chunk 之间的读超时，长回答不会被误杀；重试只发生在首包之前
 TIMEOUT_SECONDS = 60
 MAX_RETRIES = 2
-# qwen3.7-plus 默认开启思考：首字约 8s、token 约 14 倍；关闭后首字约 1.4s
-ENABLE_THINKING = True
+# qwen3.7-plus 默认开启思考：首字约 8s、token 约 14 倍；关闭后首字约 1.4s.False
+ENABLE_THINKING = False
 # 单实例最大并发流数，超出直接 429 由调用方重试/降级，避免请求堆积拖垮实例和上游限流
 MAX_CONCURRENT_STREAMS = 100
 MAX_MESSAGES = 50

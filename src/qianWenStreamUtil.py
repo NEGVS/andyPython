@@ -14,9 +14,9 @@ REASONING = "思考过程"
 ANSWER = "回答"
 USAGE = "usage"
 # 单字输出间隔（秒）
-CHAR_INTERVAL_SECONDS = 0.03
+CHAR_INTERVAL_SECONDS = 0.05
 # 待输出 chunk 积压超过该值时按比例加速，避免显示远远落后于生成
-CATCH_UP_BACKLOG_CHUNKS = 20
+CATCH_UP_BACKLOG_CHUNKS = 200
 
 _END = object()
 

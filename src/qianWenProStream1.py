@@ -17,8 +17,8 @@ BASE_URL = "https://dashscope.aliyuncs.com/compatible-mode/v1"
 MODEL = "qwen3.7-plus"
 TIMEOUT_SECONDS = 60
 MAX_RETRIES = 2
-# qwen3.7-plus 默认开启思考：首字约 8s、token 约 14 倍；关闭后首字约 1.4s
-ENABLE_THINKING = True
+# qwen3.7-plus 默认开启思考：首字约 8s、token 约 14 倍；关闭后首字约 1.4s,True
+ENABLE_THINKING = False
 # 思考过程用灰色输出，与回答区分
 GRAY, RESET = "\033[90m", "\033[0m"
 SYSTEM_PROMPT = "你是一个乐于助人的助手，回答简洁准确。"
@@ -77,6 +77,7 @@ def main() -> None:
     while True:
         try:
             question = input("你：").strip()
+            print(question, end="\n", flush=True)
         except (EOFError, KeyboardInterrupt):
             print("\n再见")
             return
