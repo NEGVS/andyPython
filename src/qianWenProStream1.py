@@ -1,12 +1,15 @@
 """
-千问 流式输出 + 命令行多轮对话
-运行：uv run python src/qianWenProStream1.py
+千问 流式输出（打字机逐字输出） + 命令行多轮对话
+运行：IDEA 直接运行，或在项目根目录 uv run python -m src.qianWenProStream1
 命令：exit / quit 退出，clear 清空上下文
 """
 import os
+from contextlib import closing
 
 from dotenv import load_dotenv
 from openai import OpenAI
+
+from src.qianWenStreamUtil import ANSWER, REASONING, read_chat_stream, typewriter
 
 # 国内：https://dashscope.aliyuncs.com/compatible-mode/v1
 # 国际/新加坡：https://dashscope-intl.aliyuncs.com/compatible-mode/v1
@@ -47,22 +50,19 @@ def stream_answer(client: OpenAI, messages: list[dict]) -> str:
     parts = []
     in_reasoning = False
     try:
-        with client.chat.completions.create(model=MODEL, messages=messages, stream=True, extra_body={"enable_thinking": ENABLE_THINKING}) as stream:
-            for chunk in stream:
-                if not chunk.choices or not chunk.choices[0].delta:
-                    continue
-                delta = chunk.choices[0].delta
-                # 思考内容是 DashScope 扩展字段，SDK 未声明，用 getattr 兜底
-                reasoning = getattr(delta, "reasoning_content", None)
-                if reasoning:
+        # closing：Ctrl+C 时立即关闭 typewriter，通知后台线程停止读流
+        with closing(typewriter(read_chat_stream(client, MODEL, messages, ENABLE_THINKING))) as chars:
+            for kind, ch in chars:
+                if kind == REASONING:
                     in_reasoning = True
-                    print(f"{GRAY}{reasoning}{RESET}", end="", flush=True)
-                if delta.content:
+                    # 每个字单独包颜色码，中断时终端不会残留灰色
+                    print(f"{GRAY}{ch}{RESET}", end="", flush=True)
+                elif kind == ANSWER:
                     if in_reasoning:
                         in_reasoning = False
                         print("\n")
-                    parts.append(delta.content)
-                    print(delta.content, end="", flush=True)
+                    parts.append(ch)
+                    print(ch, end="", flush=True)
     except KeyboardInterrupt:
         print("\n[已中断当前回答]", end="")
     print()
